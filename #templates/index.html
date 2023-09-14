@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ecommerce</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&family=Roboto:wght@100;400;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="src/style.css" />
+</head>
+
+<body>
+  <header class="bg-white z-20 relative">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+      <div class="flex lg:flex-1">
+        <a href="#" class="-m-1.5 p-1.5">
+          <span class="sr-only">Your Company</span>
+          <img class="h-10 w-auto" src="./src/img/ecommerce.png" alt="" />
+        </a>
+      </div>
+
+      <div class="flex lg:gap-x-12 basis-8/12 lg:basis-5/12">
+        <form class="w-full">
+          <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+          <div class="relative w-full">
+            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <svg class="w-6 h-6">
+                <use href="./src/img/sprite.svg#search"></use>
+              </svg>
+            </div>
+            <input type="search" id="search"
+              class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Search" required />
+            <button type="submit"
+              class="text-white absolute right-2.5 bottom-2.5 bg-indigo-500 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+              Search
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="flex lg:hidden">
+        <button type="button"
+          class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 btn__open-menu">
+          <span class="sr-only">Open main menu</span>
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+            aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </button>
+      </div>
+      <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center">
+        <a href="#" class="inline-block text-sm font-semibold leading-6 text-gray-900 mr-4 login-btn">Log in</a>
+        <a href="#" class="inline-block text-sm font-semibold leading-6 btn-primary signup-btn">Sign up</a>
+        <a href="#" class="hidden text-sm font-semibold leading-6 text-gray-900 mr-4">
+          <svg class="w-6 h-6">
+            <use href="./src/img/sprite.svg#favorite"></use>
+          </svg>
+        </a>
+        <a href="" class="hidden text-sm font-semibold leading-6 text-gray-900">
+          <svg class="w-6 h-6">
+            <use href="./src/img/sprite.svg#cart"></use>
+          </svg>
+        </a>
+        <a href="#" class="theme-btn light-theme ml-3">
+          <svg class="w-6 h-6">
+            <use href="./src/img/sprite.svg#light"></use>
+          </svg>
+        </a>
+        <a href="#" class="theme-btn dark-theme ml-3">
+          <svg class="w-6 h-6">
+            <use href="./src/img/sprite.svg#dark"></use>
+          </svg>
+        </a>
+      </div>
+    </nav>
+    <!-- Mobile menu, show/hide based on menu open state. -->
+    <div class="hidden mobile-menu" role="dialog" aria-modal="true">
+      <!-- Background backdrop, show/hide based on slide-over state. -->
+      <div class="fixed inset-0 z-10"></div>
+      <div
+        class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <div class="flex items-center justify-between">
+          <a href="#" class="-m-1.5 p-1.5">
+            <span class="sr-only">Your Company</span>
+            <img class="h-8 w-auto" src="./src/img/ecommerce.png" alt="" />
+          </a>
+          <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700 btn__close-menu">
+            <span class="sr-only">Close menu</span>
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="mt-6 flow-root">
+          <div class="-my-6 divide-y divide-gray-500/10">
+            <!-- <div class="space-y-2 py-6">
+              <form>
+                <label for="search"
+                  class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                <div class="relative">
+                  <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                    <svg class="w-6 h-6">
+                      <use href="./src/img/sprite.svg#search"></use>
+                    </svg>
+                  </div>
+                  <input type="search" id="search"
+                    class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Search" required />
+                  <button type="submit"
+                    class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Search
+                  </button>
+                </div>
+              </form>
+            </div> -->
+            <div class="py-6">
+              <a href="#"
+                class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 login-btn">Log
+                in</a>
+              <a href="#"
+                class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 signup-btn">Sign
+                up</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="product">
+    <div class="bg-white">
+      <div class="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-12 lg:max-w-7xl lg:px-8">
+        <h2 class="text-2xl font-bold text-center tracking-tight text-gray-900">
+          Products
+        </h2>
+
+        <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+          <div class="group relative">
+            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none  lg:h-80">
+              <button class="absolute right-2 top-2 rounded-full bg-white text-slate-400 hover:text-slate-800 p-2 z-10">
+                <svg class="w-6 h-6">
+                  <use href="./src/img/sprite.svg#favorite"></use>
+                </svg>
+              </button>
+              <img src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
+                alt="Front of men&#039;s Basic Tee in black."
+                class="h-full w-full object-cover object-center lg:h-full lg:w-full group-hover:opacity-75" />
+            </div>
+            <div class="mt-4 flex justify-between">
+              <div>
+                <h3 class="text-sm text-gray-700">
+                  <a href="/product.html">
+                    <span aria-hidden="true" class="absolute inset-0"></span>
+                    Basic Tee
+                  </a>
+                </h3>
+                <p class="mt-1 text-sm text-gray-500">Black</p>
+              </div>
+              <p class="text-sm font-medium text-gray-900">$35</p>
+            </div>
+          </div>
+
+          <div class="group relative">
+            <div
+              class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+              <img src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
+                alt="Front of men&#039;s Basic Tee in black."
+                class="h-full w-full object-cover object-center lg:h-full lg:w-full" />
+            </div>
+            <div class="mt-4 flex justify-between">
+              <div>
+                <h3 class="text-sm text-gray-700">
+                  <a href="#">
+                    <span aria-hidden="true" class="absolute inset-0"></span>
+                    Basic Tee
+                  </a>
+                </h3>
+                <p class="mt-1 text-sm text-gray-500">Black</p>
+              </div>
+              <p class="text-sm font-medium text-gray-900">$35</p>
+            </div>
+          </div>
+          <div class="group relative">
+            <div
+              class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+              <img src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
+                alt="Front of men&#039;s Basic Tee in black."
+                class="h-full w-full object-cover object-center lg:h-full lg:w-full" />
+            </div>
+            <div class="mt-4 flex justify-between">
+              <div>
+                <h3 class="text-sm text-gray-700">
+                  <a href="#">
+                    <span aria-hidden="true" class="absolute inset-0"></span>
+                    Basic Tee
+                  </a>
+                </h3>
+                <p class="mt-1 text-sm text-gray-500">Black</p>
+              </div>
+              <p class="text-sm font-medium text-gray-900">$35</p>
+            </div>
+          </div>
+          <div class="group relative">
+            <div
+              class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+              <img src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
+                alt="Front of men&#039;s Basic Tee in black."
+                class="h-full w-full object-cover object-center lg:h-full lg:w-full" />
+            </div>
+            <div class="mt-4 flex justify-between">
+              <div>
+                <h3 class="text-sm text-gray-700">
+                  <a href="#">
+                    <span aria-hidden="true" class="absolute inset-0"></span>
+                    Basic Tee
+                  </a>
+                </h3>
+                <p class="mt-1 text-sm text-gray-500">Black</p>
+              </div>
+              <p class="text-sm font-medium text-gray-900">$35</p>
+            </div>
+          </div>
+          <div class="group relative">
+            <div
+              class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+              <img src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
+                alt="Front of men&#039;s Basic Tee in black."
+                class="h-full w-full object-cover object-center lg:h-full lg:w-full" />
+            </div>
+            <div class="mt-4 flex justify-between">
+              <div>
+                <h3 class="text-sm text-gray-700">
+                  <a href="#">
+                    <span aria-hidden="true" class="absolute inset-0"></span>
+                    Basic Tee
+                  </a>
+                </h3>
+                <p class="mt-1 text-sm text-gray-500">Black</p>
+              </div>
+              <p class="text-sm font-medium text-gray-900">$35</p>
+            </div>
+          </div>
+          <div class="group relative">
+            <div
+              class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+              <img src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg"
+                alt="Front of men&#039;s Basic Tee in black."
+                class="h-full w-full object-cover object-center lg:h-full lg:w-full" />
+            </div>
+            <div class="mt-4 flex justify-between">
+              <div>
+                <h3 class="text-sm text-gray-700">
+                  <a href="#">
+                    <span aria-hidden="true" class="absolute inset-0"></span>
+                    Basic Tee
+                  </a>
+                </h3>
+                <p class="mt-1 text-sm text-gray-500">Black</p>
+              </div>
+              <p class="text-sm font-medium text-gray-900">$35</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main modal -->
+  <div id="authentication-modal" tabindex="-1" aria-hidden="true"
+    class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-screen max-h-full bg-slate-500/40">
+    <div class="relative w-full max-w-md max-h-full left-0 right-0 m-auto">
+      <!-- Modal content -->
+      <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+        <button type="button"
+          class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white close-modal"
+          data-modal-hide="authentication-modal">
+          <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+          </svg>
+          <span class="sr-only">Close modal</span>
+        </button>
+        <div class="px-6 py-6 lg:px-8">
+          <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">
+            Sign in to our platform
+          </h3>
+          <form class="space-y-6" action="#">
+            <div>
+              <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
+              <input type="email" name="email" id="email"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                placeholder="name@company.com" required />
+            </div>
+            <div>
+              <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
+                password</label>
+              <input type="password" name="password" id="password" placeholder="••••••••"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+                required />
+            </div>
+            <div class="flex justify-between">
+              <div class="flex items-start">
+                <div class="flex items-center h-5">
+                  <input id="remember" type="checkbox" value=""
+                    class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-600 dark:border-gray-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800"
+                    required />
+                </div>
+                <label for="remember" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Remember
+                  me</label>
+              </div>
+              <a href="#" class="text-sm text-blue-700 hover:underline dark:text-blue-500">Lost Password?</a>
+            </div>
+            <button type="submit"
+              class="w-full text-white bg-indigo-500 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+              Login to your account
+            </button>
+            <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
+              Not registered?
+              <a href="#" class="text-blue-700 hover:underline dark:text-blue-500">Create account</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="register-modal" tabindex="-1" aria-hidden="true"
+    class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-100 max-h-full bg-slate-500/40">
+    <div class="relative w-full max-w-md max-h-full left-0 right-0 m-auto">
+      <!-- Modal content -->
+      <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+        <button type="button"
+          class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white close-modal"
+          data-modal-hide="register-modal">
+          <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+          </svg>
+          <span class="sr-only">Close modal</span>
+        </button>
+        <div class="px-6 py-6 lg:px-8">
+          <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">
+            Sign up to our platform
+          </h3>
+
+          <form>
+            <div class="relative z-0 w-full mb-6 group">
+              <input type="email" name="floating_email" id="floating_email"
+                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                placeholder=" " required />
+              <label for="floating_email"
+                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email
+                address</label>
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+              <input type="password" name="floating_password" id="floating_password"
+                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                placeholder=" " required />
+              <label for="floating_password"
+                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+              <input type="password" name="repeat_password" id="floating_repeat_password"
+                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                placeholder=" " required />
+              <label for="floating_repeat_password"
+                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Confirm
+                password</label>
+            </div>
+            <div class="grid md:grid-cols-2 md:gap-6">
+              <div class="relative z-0 w-full mb-6 group">
+                <input type="text" name="floating_first_name" id="floating_first_name"
+                  class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  placeholder=" " required />
+                <label for="floating_first_name"
+                  class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First
+                  name</label>
+              </div>
+              <div class="relative z-0 w-full mb-6 group">
+                <input type="text" name="floating_last_name" id="floating_last_name"
+                  class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  placeholder=" " required />
+                <label for="floating_last_name"
+                  class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last
+                  name</label>
+              </div>
+            </div>
+
+            <button type="submit"
+              class="text-white bg-indigo-500 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="src/main.js"></script>
+</body>
+
+</html>
