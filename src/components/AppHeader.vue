@@ -5,10 +5,10 @@
       aria-label="Global"
     >
       <div class="flex lg:flex-1">
-        <a href="#" class="-m-1.5 p-1.5">
+        <router-link :to="{ name: 'home' }" class="-m-1.5 p-1.5">
           <span class="sr-only">Your Company</span>
           <img class="h-10 w-auto" src="@/assets/ecommerce.png" alt="" />
-        </a>
+        </router-link>
       </div>
 
       <div class="flex lg:gap-x-12 basis-8/12 lg:basis-5/12">
@@ -63,22 +63,24 @@
       <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center">
         <a
           href="#"
-          class="inline-block text-sm font-semibold leading-6 text-gray-900 mr-4 login-btn"
-          >Log in</a
-        >
-        <a href="#" class="inline-block text-sm font-semibold leading-6 btn-primary signup-btn"
-          >Sign up</a
-        >
-        <a href="#" class="hidden text-sm font-semibold leading-6 text-gray-900 mr-4">
-          <svg class="w-6 h-6">
-            <use href="@/assets/sprite.svg#favorite"></use>
-          </svg>
+          class="inline-block text-sm font-semibold leading-6 text-gray-900 mr-4"
+          @click.prevent="toggleAuthModal"
+          >Log in/Register
         </a>
-        <a href="" class="hidden text-sm font-semibold leading-6 text-gray-900">
+        <router-link
+          :to="{ name: 'profile' }"
+          class="text-sm font-semibold leading-6 text-gray-900 mr-4"
+        >
+          <svg class="w-6 h-6">
+            <use href="@/assets/sprite.svg#profile"></use>
+          </svg>
+        </router-link>
+        <router-link :to="{ name: 'cart' }" class="text-sm font-semibold leading-6 text-gray-900">
           <svg class="w-6 h-6">
             <use href="@/assets/sprite.svg#cart"></use>
           </svg>
-        </a>
+        </router-link>
+
         <a href="#" class="theme-btn light-theme ml-3">
           <svg class="w-6 h-6">
             <use href="@/assets/sprite.svg#light"></use>
@@ -142,14 +144,10 @@
             <div class="py-6">
               <a
                 href="#"
-                class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 login-btn"
-                >Log in</a
-              >
-              <a
-                href="#"
-                class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 signup-btn"
-                >Sign up</a
-              >
+                class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                @click.prevent="toggleAuthModal"
+                >Log in/Register
+              </a>
             </div>
           </div>
         </div>
@@ -158,6 +156,12 @@
   </header>
 </template>
 
-<script setup></script>
+<script setup>
+import { useModalStore } from '@/stores/modal'
+const store = useModalStore()
+function toggleAuthModal() {
+  store.isOpen = !store.isOpen
+}
+</script>
 
 <style lang="scss" scoped></style>

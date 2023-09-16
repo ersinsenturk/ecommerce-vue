@@ -1,0 +1,83 @@
+<template>
+  <div class="mx-auto max-w-2xl p-4 sm:px-6 lg:max-w-7xl lg:px-8">
+    <div class="flex shadow-md">
+      <div class="w-3/4 bg-white px-10 py-10">
+        <div class="flex justify-between border-b pb-8">
+          <h1 class="font-semibold text-2xl">Shopping Cart</h1>
+          <h2 class="font-semibold text-2xl">3 Items</h2>
+        </div>
+        <div class="flex mt-10 mb-5">
+          <h3 class="font-semibold text-gray-600 text-xs uppercase w-3/5">Product Details</h3>
+
+          <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5">Total</h3>
+          <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5"></h3>
+        </div>
+        <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
+          <div class="flex w-3/5">
+            <div class="w-20">
+              <img
+                class="h-24 object-cover"
+                src="https://i.dummyjson.com/data/products/1/1.jpg"
+                alt=""
+              />
+            </div>
+            <div class="flex flex-col justify-evenly ml-4 flex-grow">
+              <span class="font-bold text-md">Iphone 6S</span>
+              <span class="text-gray-500 text-sm">Apple</span>
+            </div>
+          </div>
+
+          <span class="text-center w-1/5 font-semibold text-sm">$400.00</span>
+          <span class="text-center w-1/5 font-semibold text-sm">
+            <button>
+              <svg class="w-6 h-6">
+                <use href="@/assets/sprite.svg#remove"></use>
+              </svg>
+            </button>
+          </span>
+        </div>
+        <router-link
+          :to="{ name: 'home' }"
+          class="flex font-semibold text-indigo-500 text-sm mt-10"
+        >
+          <svg class="fill-current mr-2 text-indigo-500 w-4" viewBox="0 0 448 512">
+            <path
+              d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z"
+            />
+          </svg>
+          Continue Shopping
+        </router-link>
+      </div>
+
+      <div class="w-1/4 px-8 py-10 bg-slate-100">
+        <h1 class="font-semibold text-2xl border-b pb-8">Order Summary</h1>
+        <div class="flex justify-between mt-10 mb-5">
+          <span class="font-semibold text-sm uppercase">Items 3</span>
+          <span class="font-semibold text-sm">590$</span>
+        </div>
+        <div>
+          <label class="font-medium inline-block mb-3 text-sm uppercase">Shipping</label>
+          <select class="block p-2 text-gray-600 w-full text-sm">
+            <option>Standard shipping - $10.00</option>
+          </select>
+        </div>
+
+        <div class="border-t mt-8">
+          <div class="flex font-semibold justify-between py-6 text-sm uppercase">
+            <span>Total cost</span>
+            <span>$600</span>
+          </div>
+          <button
+            class="bg-indigo-500 font-semibold hover:bg-indigo-800 py-3 text-sm text-white uppercase w-full rounded-md"
+          >
+            Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script setup></script>
+
+<style lang="scss" scoped></style>
