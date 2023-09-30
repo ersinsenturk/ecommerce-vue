@@ -11,7 +11,7 @@
             <div class="flex items-center">
               <router-link
                 :to="{ name: 'home', query: { list: `category/${product.category}` } }"
-                class="mr-2 text-sm font-medium text-gray-900"
+                class="mr-2 text-sm font-medium text-gray-900 dark:text-white"
               >
                 {{ capitalizeFirstLetter(product.category) }}
               </router-link>
@@ -32,7 +32,7 @@
             <div class="flex items-center">
               <router-link
                 :to="{ name: 'home', query: { list: `search?q=${product.brand}` } }"
-                class="mr-2 text-sm font-medium text-gray-900"
+                class="mr-2 text-sm font-medium text-gray-900 dark:text-white"
               >
                 {{ product.brand }}
               </router-link>
@@ -51,7 +51,11 @@
           </li>
 
           <li class="text-sm">
-            <a href="#" aria-current="page" class="font-medium text-gray-500 hover:text-gray-600">
+            <a
+              href="#"
+              aria-current="page"
+              class="font-medium text-gray-500 hover:text-gray-600 dark:text-gray-200"
+            >
               {{ product.title }}
             </a>
           </li>
@@ -99,14 +103,14 @@
         class="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16"
       >
         <div class="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-          <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+          <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl dark:text-white">
             {{ product.title }}
           </h1>
         </div>
 
         <div class="mt-4 lg:row-span-3 lg:mt-0">
           <h2 class="sr-only">Product information</h2>
-          <p class="text-3xl tracking-tight text-gray-900">${{ product.price }}</p>
+          <p class="text-3xl tracking-tight text-gray-900 dark:text-white">${{ product.price }}</p>
 
           <div class="mt-6">
             <h3 class="sr-only">Reviews</h3>
@@ -129,22 +133,22 @@
                 </svg>
               </div>
               <p class="sr-only">{{ rating }} out of 5 stars</p>
-              <p>({{ rating }})</p>
+              <p class="dark:text-white">({{ rating }})</p>
             </div>
           </div>
 
-          <form class="mt-10">
+          <div class="mt-10">
             <div class="w-full flex mt-10 items-center justify-between">
               <button
                 type="submit"
-                class="flex w-80 items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                class="btn-primary flex w-80 items-center justify-center rounded-md border border-transparent px-8 py-3 text-base font-medium focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                 @click.prevent="actionCart"
               >
                 {{ inCart ? 'Remove from bag' : 'Add to bag' }}
               </button>
 
               <button
-                class="group border border-gray-400 rounded-lg py-3 px-3 hover:text-gray-800 transition-all duration-100"
+                class="group border border-gray-400 rounded-lg py-3 px-3 hover:text-gray-800 transition-all duration-100 dark:bg-gray-200"
                 @click.prevent="toggleFavorite"
                 :class="isFavorite ? 'text-red-600' : 'text-slate-400'"
               >
@@ -155,7 +159,7 @@
                 </svg>
               </button>
             </div>
-          </form>
+          </div>
         </div>
 
         <div
@@ -165,7 +169,7 @@
             <h3 class="sr-only">Description</h3>
 
             <div class="space-y-6">
-              <p class="text-base text-gray-900">
+              <p class="text-base text-gray-900 dark:text-white">
                 {{ product.description }}
               </p>
             </div>

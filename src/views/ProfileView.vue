@@ -1,6 +1,6 @@
 <template>
   <div class="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-12 lg:max-w-7xl lg:px-8">
-    <div class="bg-slate-100 rounded-lg overflow-hidden">
+    <div class="bg-slate-100 rounded-lg overflow-hidden dark:bg-slate-500">
       <div class="bg-[url('@/assets/profile-header.jpg')] bg-cover min-h-[180px]"></div>
       <div class="p-4">
         <div class="relative mt-[-10%] inline-block">
@@ -31,9 +31,9 @@
           </figure>
         </div>
         <div class="flex justify-between items-center">
-          <div class="text-lg font-bold">{{ user.name }}</div>
+          <div class="text-lg font-bold dark:text-white">{{ user.name }}</div>
           <button
-            class="text-white bg-indigo-500 hover:bg-indigo-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center disabled:opacity-75 disabled:hover:bg-indigo-500 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            class="btn-primary text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center disabled:opacity-75 disabled:hover:bg-indigo-500 dark:focus:ring-blue-800"
             @click="signout"
           >
             Sign out
@@ -43,7 +43,7 @@
     </div>
 
     <div
-      class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 pb-8 dark:text-gray-400 dark:border-gray-700"
+      class="text-sm font-medium text-center text-gray-500 border-b border-gray-200 pb-8 dark:text-gray-200 dark:border-white"
     >
       <div class="flex flex-wrap mb-4">
         <a
@@ -53,7 +53,9 @@
           :key="index"
           @click.prevent="selectedTab = index"
           :class="
-            selectedTab === index ? 'text-indigo-500 border-indigo-600' : 'border-transparent'
+            selectedTab === index
+              ? 'text-indigo-500 border-indigo-600 dark:text-white dark:border-white'
+              : 'border-transparent'
           "
         >
           {{ index }}

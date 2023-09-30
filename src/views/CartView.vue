@@ -1,7 +1,7 @@
 <template>
-  <div class="mx-auto max-w-2xl p-4 sm:px-6 lg:max-w-7xl lg:px-8 text-center">
+  <div class="mx-auto max-w-2xl p-4 sm:px-6 lg:max-w-7xl lg:px-8 text-center min-h-screen">
     <div v-if="!order.orderComplete" class="flex shadow-md text-left">
-      <div class="w-3/4 bg-white px-10 py-10">
+      <div class="w-3/4 bg-white px-10 py-10 dark:bg-gray-200">
         <div class="flex justify-between border-b pb-8">
           <h1 class="font-semibold text-2xl">Shopping Cart</h1>
         </div>
@@ -55,7 +55,7 @@
             <span>${{ totalPrice }}</span>
           </div>
           <button
-            class="bg-indigo-500 font-semibold hover:bg-indigo-800 py-3 text-sm text-white uppercase w-full rounded-md"
+            class="btn-primary font-semibold py-3 text-sm uppercase w-full rounded-md"
             @click.prevent="completeOrder"
           >
             Checkout
@@ -66,7 +66,7 @@
     <app-spinner v-if="isLoading"></app-spinner>
     <div
       v-if="order.orderComplete"
-      class="text-center border shadow-md rounded-lg p-12 px-24 inline-block"
+      class="text-center border shadow-md rounded-lg p-12 px-24 inline-block dark:bg-gray-200"
     >
       <div class="w-16 inline-block text-green-700">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -81,7 +81,7 @@
       <div class="text-3xl font-bold">Order Completed</div>
       <router-link
         :to="{ name: 'home' }"
-        class="inline-block bg-indigo-500 font-semibold hover:bg-indigo-800 p-3 mt-4 text-sm text-white uppercase rounded-md"
+        class="btn-primary inline-block font-semibold p-3 mt-4 text-sm uppercase rounded-md"
       >
         Back to shopping
       </router-link>

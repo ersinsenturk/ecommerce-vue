@@ -36,7 +36,7 @@
           <ul class="flex flex-wrap mb-4">
             <li class="flex-auto text-center">
               <a
-                class="block rounded py-3 px-4 transition"
+                class="block rounded py-3 px-4 transition dark:text-white"
                 href="#"
                 @click.prevent="tab = 'login'"
                 :class="{
@@ -48,7 +48,7 @@
             </li>
             <li class="flex-auto text-center">
               <a
-                class="block rounded py-3 px-4 transition hover:text-indigo-800"
+                class="block rounded py-3 px-4 transition hover:text-indigo-800 dark:text-white"
                 href="#"
                 @click.prevent="tab = 'register'"
                 :class="{
@@ -76,8 +76,8 @@
 </template>
 
 <script setup>
-import LoginForm from './LoginForm.vue'
-import RegisterForm from './RegisterForm.vue'
+import LoginForm from '@/components/LoginForm.vue'
+import RegisterForm from '@/components/RegisterForm.vue'
 
 import { ref } from 'vue'
 const tab = ref('login')

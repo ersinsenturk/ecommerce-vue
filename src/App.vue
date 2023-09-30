@@ -7,14 +7,17 @@ import { auth, onAuthStateChanged } from '@/includes/firebase'
 import { useUserStore } from '@/stores/user'
 import { useCartStore } from '@/stores/cart'
 import { useProductsStore } from '@/stores/products'
+import { useModalStore } from '@/stores/modal'
 import { storeToRefs } from 'pinia'
 import { useRoute } from 'vue-router'
 
 const user = useUserStore()
 const { userLoggedIn } = storeToRefs(user)
 const cart = useCartStore()
+const modal = useModalStore()
 
 onMounted(() => {
+  getTheme()
   getProducts()
   onAuthStateChanged(auth, (loggedUser) => {
     if (loggedUser) {
@@ -34,6 +37,10 @@ const getProducts = async () => {
 }
 watch(route, getProducts)
 provide('products', products)
+
+const getTheme = () => {
+  modal.theme = localStorage.getItem('theme') || modal.theme
+}
 </script>
 
 <style lang="scss" scoped></style>

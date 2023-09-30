@@ -20,15 +20,15 @@
     </div>
     <div class="mt-4 flex justify-between">
       <div class="text-left">
-        <h3 class="text-sm text-gray-700">
+        <h3 class="text-sm text-gray-700 dark:text-white">
           <router-link :to="{ name: 'product', params: { id: props.product.id } }">
             <span aria-hidden="true" class="absolute inset-0"></span>
             {{ props.product.title }}
           </router-link>
         </h3>
-        <p class="mt-1 text-sm text-gray-500">{{ props.product.brand }}</p>
+        <p class="mt-1 text-sm text-gray-500 dark:text-white">{{ props.product.brand }}</p>
       </div>
-      <p class="text-sm font-medium text-gray-900">${{ props.product.price }}</p>
+      <p class="text-sm font-medium text-gray-900 dark:text-white">${{ props.product.price }}</p>
     </div>
   </div>
 </template>
