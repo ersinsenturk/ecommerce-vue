@@ -4,7 +4,9 @@
       class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none lg:h-80"
     >
       <button
-        class="absolute right-2 top-2 rounded-full bg-white text-slate-400 hover:text-slate-800 p-2 z-10"
+        class="absolute right-2 top-2 rounded-full bg-white hover:text-slate-800 p-2 z-10"
+        @click="toggleFavorite(props.product.id)"
+        :class="favClass(props.product.id) ? 'text-red-600' : 'text-slate-400'"
       >
         <svg class="w-6 h-6">
           <use href="@/assets/sprite.svg#favorite"></use>
@@ -17,7 +19,7 @@
       />
     </div>
     <div class="mt-4 flex justify-between">
-      <div>
+      <div class="text-left">
         <h3 class="text-sm text-gray-700">
           <router-link :to="{ name: 'product', params: { id: props.product.id } }">
             <span aria-hidden="true" class="absolute inset-0"></span>
@@ -32,7 +34,17 @@
 </template>
 
 <script setup>
+import { useUserStore } from '../stores/user'
+
 const props = defineProps(['product'])
+
+const user = useUserStore()
+const toggleFavorite = (id) => {
+  user.favorite(id)
+}
+const favClass = (id) => {
+  return user.getFavorites.includes(id) ? true : false
+}
 </script>
 
 <style lang="scss" scoped></style>

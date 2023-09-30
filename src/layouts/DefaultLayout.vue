@@ -1,10 +1,10 @@
 <template>
   <app-header></app-header>
-  <router-view v-slot="{ Component }">
-    <transition name="fade" mode="out-in">
+  <router-view> </router-view>
+  <!-- <router-view v-slot="{ Component }"> -->
+  <!-- <transition name="fade" mode="out-in">
       <component :is="Component"></component>
-    </transition>
-  </router-view>
+    </transition> -->
   <app-auth></app-auth>
 </template>
 <script setup>

@@ -3,16 +3,17 @@
     tabindex="-1"
     aria-hidden="true"
     class="fixed top-0 left-0 right-0 z-50 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-100 max-h-full bg-slate-500/40"
-    :class="store.hiddenClass"
-    @click.self.prevent="store.isOpen = false"
+    :class="modal.hiddenClass"
+    @click.self.prevent="modal.isOpen = false"
   >
     <div class="relative w-full max-w-md max-h-full left-0 right-0 m-auto">
+      <app-spinner v-if="isLoading"></app-spinner>
       <!-- Modal content -->
       <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
         <button
           type="button"
           class="absolute top-2 right-2 text-gray-400 bg-transparent hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white close-modal"
-          @click="store.isOpen = false"
+          @click="modal.isOpen = false"
         >
           <svg
             class="w-3 h-3"
@@ -59,8 +60,16 @@
             </li>
           </ul>
         </div>
-        <login-form v-if="tab === 'login'"></login-form>
-        <register-form v-if="tab === 'register'"></register-form>
+        <login-form
+          v-if="tab === 'login'"
+          @showLoading="showLoading"
+          @closeModal="closeModal"
+        ></login-form>
+        <register-form
+          v-if="tab === 'register'"
+          @showLoading="showLoading"
+          @closeModal="closeModal"
+        ></register-form>
       </div>
     </div>
   </div>
@@ -74,7 +83,15 @@ import { ref } from 'vue'
 const tab = ref('login')
 
 import { useModalStore } from '@/stores/modal'
-const store = useModalStore()
+const modal = useModalStore()
+
+const isLoading = ref(false)
+const showLoading = (val) => {
+  isLoading.value = val
+}
+const closeModal = () => {
+  modal.isOpen = false
+}
 </script>
 
 <style lang="scss" scoped></style>
