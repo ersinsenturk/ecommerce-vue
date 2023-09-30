@@ -1,12 +1,14 @@
 <template>
   <div class="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-12 lg:max-w-7xl lg:px-8">
     <div class="bg-slate-100 rounded-lg overflow-hidden dark:bg-slate-500">
-      <div class="bg-[url('@/assets/profile-header.jpg')] bg-cover min-h-[180px]"></div>
+      <div
+        class="bg-[url('@/assets/profile-header.jpg')] bg-cover min-h-[90px] lg:min-h-[180px]"
+      ></div>
       <div class="p-4">
         <div class="relative mt-[-10%] inline-block">
           <label
             for="dropzone-file"
-            class="absolute -right-2 -top-2 w-8 h-8 z-10 bg-white p-1 text-indigo-500 rounded-full cursor-pointer"
+            class="absolute -right-2 -top-2 w-6 h-6 lg:w-8 lg:h-8 z-10 bg-white p-1 text-indigo-500 rounded-full cursor-pointer"
           >
             <svg class="w-full h-full">
               <use class="w-full h-full" href="@/assets/sprite.svg#camera"></use>
@@ -21,7 +23,7 @@
           </label>
 
           <figure
-            class="max-w-[160px] inline-block rounded-lg overflow-hidden bg-white border-4 border-white"
+            class="max-w-[100px] lg:max-w-[160px] inline-block rounded-lg overflow-hidden bg-white border-4 border-white"
           >
             <img
               :src="user.avatar || 'https://placehold.co/160x160'"
@@ -33,7 +35,7 @@
         <div class="flex justify-between items-center">
           <div class="text-lg font-bold dark:text-white">{{ user.name }}</div>
           <button
-            class="btn-primary text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center disabled:opacity-75 disabled:hover:bg-indigo-500 dark:focus:ring-blue-800"
+            class="btn-primary text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-auto px-5 py-2.5 text-center disabled:opacity-75 disabled:hover:bg-indigo-500 dark:focus:ring-blue-800"
             @click="signout"
           >
             Sign out

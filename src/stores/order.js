@@ -35,6 +35,7 @@ export const useOrderStore = defineStore('order', () => {
   }
 
   const getOrders = async (uid) => {
+    orders.value = []
     const q = query(collection(db, 'orders'), where('uid', '==', uid))
     const querySnapshot = await getDocs(q)
     querySnapshot.forEach((doc) => {

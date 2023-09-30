@@ -1,6 +1,6 @@
 <template>
   <div class="border shadow-md rounded-lg mb-4 p-4 text-left">
-    <div class="flex items-center mb-4 justify-between">
+    <div class="flex flex-col lg:flex-row lg:items-center mb-4 justify-between">
       <div class="text-lg text-gray-600">
         Total Cost: <span class="font-bold">${{ props.order.totalPrice }}</span>
       </div>
@@ -13,11 +13,11 @@
       <figure class="w-16 aspect-square mr-4 flex items-center justify-center basis-1/6">
         <img class="inline-block" :src="transaction.thumbnail" :alt="transaction.title" />
       </figure>
-      <div class="text-base basis-1/2">
+      <div class="text-sm lg:text-base basis-1/2">
         <div>{{ transaction.title }}</div>
         <div>{{ transaction.brand }}</div>
       </div>
-      <div class="text-lg basis-1/3 text-right">${{ transaction.price }}</div>
+      <div class="lg:text-lg basis-1/3 text-right">${{ transaction.price }}</div>
     </div>
   </div>
 </template>

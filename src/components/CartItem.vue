@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
+  <div class="flex items-center hover:bg-gray-100 py-5">
     <div class="flex w-3/5">
       <div class="w-20">
         <img class="h-24 object-cover" :src="props.item.thumbnail" :alt="props.item.title" />

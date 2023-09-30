@@ -1,11 +1,35 @@
 <template>
-  <div class="mx-auto max-w-2xl p-4 sm:px-6 lg:max-w-7xl lg:px-8 text-center min-h-screen">
-    <div v-if="!order.orderComplete" class="flex shadow-md text-left">
-      <div class="w-3/4 bg-white px-10 py-10 dark:bg-gray-200">
+  <div class="mx-auto max-w-2xl lg:p-4 sm:px-6 lg:max-w-7xl lg:px-8 text-center min-h-screen">
+    <div
+      v-if="!cart.getCart.length"
+      class="text-center border shadow-md rounded-lg p-12 px-24 inline-block dark:bg-gray-200"
+    >
+      <div class="w-16 inline-block text-red-700">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            fill-rule="evenodd"
+            d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </div>
+      <div class="text-3xl font-bold">No items added to cart yet!</div>
+      <router-link
+        :to="{ name: 'home' }"
+        class="btn-primary inline-block font-semibold p-3 mt-4 text-sm uppercase rounded-md"
+      >
+        Back to shopping
+      </router-link>
+    </div>
+    <div
+      v-if="!order.orderComplete && cart.getCart.length"
+      class="flex flex-col lg:flex-row shadow-md text-left"
+    >
+      <div class="basis-full lg:basis-3/4 bg-white p-4 lg:p-10 dark:bg-gray-200">
         <div class="flex justify-between border-b pb-8">
-          <h1 class="font-semibold text-2xl">Shopping Cart</h1>
+          <h1 class="font-semibold text-lg lg:text-2xl">Shopping Cart</h1>
         </div>
-        <div class="flex mt-10 mb-5">
+        <div class="flex mt-4 lg:mt-10 lg:mb-5">
           <h3 class="font-semibold text-gray-600 text-xs uppercase w-3/5">Product Details</h3>
 
           <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5">Total</h3>
@@ -31,7 +55,7 @@
         </router-link>
       </div>
 
-      <div class="w-1/4 px-8 py-10 bg-slate-100">
+      <div class="basis-full lg:basis-1/4 px-8 py-10 bg-slate-100">
         <h1 class="font-semibold text-2xl border-b pb-8">Order Summary</h1>
         <div class="flex justify-between mt-10 mb-5">
           <span class="font-semibold text-sm uppercase">{{ cart.length }} Items</span>

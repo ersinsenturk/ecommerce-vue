@@ -1,6 +1,14 @@
 <template>
   <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-    <product-card v-for="(product, i) in favProducts" :key="i" :product="product"></product-card>
+    <div class="font-bold col-span-4 text-center text-lg" v-if="!favProducts.length">
+      No favorite product yet!
+    </div>
+    <product-card
+      v-else
+      v-for="(product, i) in favProducts"
+      :key="i"
+      :product="product"
+    ></product-card>
   </div>
 </template>
 
