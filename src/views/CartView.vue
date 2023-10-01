@@ -1,7 +1,7 @@
 <template>
   <div class="mx-auto max-w-2xl lg:p-4 sm:px-6 lg:max-w-7xl lg:px-8 text-center min-h-screen">
     <div
-      v-if="!cart.getCart.length"
+      v-if="!cart.getCart.length && !order.orderComplete"
       class="text-center border shadow-md rounded-lg p-12 px-24 inline-block dark:bg-gray-200"
     >
       <div class="w-16 inline-block text-red-700">

@@ -1,6 +1,6 @@
 // import { API_URL } from '../includes/config'
 import { defineStore } from 'pinia'
-import { auth, db } from '../includes/firebase'
+import { auth, db, onAuthStateChanged } from '../includes/firebase'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 import { doc, setDoc, getDoc, updateDoc } from 'firebase/firestore'
 import { computed, ref } from 'vue'
@@ -15,8 +15,6 @@ export const useUserStore = defineStore('user', () => {
   }
   const userObj = ref(defaultState)
   const userLoggedIn = ref(false)
-  // const cart = ref([])
-  // const deliveryPrice = ref(10)
 
   const register = async (values) => {
     try {
@@ -63,6 +61,7 @@ export const useUserStore = defineStore('user', () => {
   }
 
   const getUser = async (userId) => {
+    if (userId) userLoggedIn.value = true
     const docRef = doc(db, 'users', userId)
     const docSnap = await getDoc(docRef)
     if (docSnap.exists()) {
@@ -75,6 +74,9 @@ export const useUserStore = defineStore('user', () => {
       console.log('No such document!')
     }
   }
+
+  const getUserState = () =>
+    new Promise((resolve, reject) => onAuthStateChanged(auth, resolve, reject))
 
   const favorite = async (id) => {
     const favIndex = userObj.value.favorites.findIndex((fav) => fav === id)
@@ -109,6 +111,7 @@ export const useUserStore = defineStore('user', () => {
     register,
     login,
     getUser,
+    getUserState,
     userLoggedIn,
     signout,
     favorite,

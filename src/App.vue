@@ -12,19 +12,23 @@ import { storeToRefs } from 'pinia'
 import { useRoute } from 'vue-router'
 
 const user = useUserStore()
-const { userLoggedIn } = storeToRefs(user)
+
 const cart = useCartStore()
 const modal = useModalStore()
 
 onMounted(() => {
   getTheme()
   getProducts()
-  onAuthStateChanged(auth, (loggedUser) => {
-    if (loggedUser) {
-      user.getUser(loggedUser.uid)
-      userLoggedIn.value = true
+  onAuthStateChanged(
+    auth,
+    (loggedUser) => {
+      if (loggedUser) user.getUser(loggedUser.uid)
+    },
+    (error) => {
+      console.error(error)
     }
-  })
+  )
+
   cart.getCartFromLocal()
 })
 

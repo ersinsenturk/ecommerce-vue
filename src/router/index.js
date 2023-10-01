@@ -45,10 +45,11 @@ const router = createRouter({
   }
 })
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   const user = useUserStore()
+  const isAuth = await user.getUserState()
 
-  if (!user.userLoggedIn && to.meta.requiresAuth) {
+  if (!isAuth && to.meta.requiresAuth) {
     next({ name: 'home' })
     return
   } else {
